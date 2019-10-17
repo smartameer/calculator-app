@@ -12,7 +12,7 @@
                 data: data
             }).then(function (resp) {
                 if (ng.equals(resp.status, 202)) {
-                    $log.debug('Saved')
+                    $log.info('Record Saved')
                     return callback(null, resp)
                 }
                 return callback({ errorMessage: 'INVALID REQUEST' }, null)
@@ -27,6 +27,7 @@
                 url: CONST.BASE_API + CONST.API.GET_DATA.URL,
                 method: CONST.API.GET_DATA.METHOD
             }).then(function (resp) {
+                $log.info('Found a record')
                 if (ng.equals(resp.status, 200) &&
                     ng.isObject(resp.data) &&
                     !ng.equals(resp.data, null)) {
