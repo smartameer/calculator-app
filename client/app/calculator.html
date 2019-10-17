@@ -1,0 +1,78 @@
+<div layout="row" data-ng-cloak layout-align="center center">
+  <div class="md-pane" layout="column" layout-fill flex-gt-sm="60" flex="100">
+    <md-toolbar class="md-primary">
+      <div class="md-toolbar-tools">
+        <h2 class="md-flex">Calculator</h2>
+      </div>
+    </md-toolbar>
+    <md-content flex layout-padding>
+      <form name="calcForm">
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>First Number</label>
+            <input
+              type="number"
+              min="1"
+              data-ng-model="cc.data.fnum"
+              data-ng-pattern="cc.integerPattern"
+              data-ng-required="true"
+              placeholder="First Number"
+              class="form-control input-lg"
+              name="fnum"
+            />
+            <div
+              data-ng-messages="calcForm.fnum.$error"
+              data-ng-show="calcForm.fnum.$touched"
+              multiple md-auto-hide="false"
+              >
+              <div data-ng-message="min">Number should be greater than 0</div>
+              <div data-ng-message="required">This field is required</div>
+              <div data-ng-message="number">Should be a number / Number should be greater than 0</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Last Number</label>
+            <input
+              type="number"
+              min="1"
+              data-ng-model="cc.data.snum"
+              data-ng-pattern="cc.integerPattern"
+              data-ng-required="true"
+              placeholder="Second Number"
+              class="form-control input-lg"
+              name="snum"
+              />
+            <div
+              class="help-block"
+              data-ng-messages="calcForm.snum.$error"
+              data-ng-show="calcForm.snum.$touched"
+              >
+              <div data-ng-message="min">Number should be greater than 0</div>
+              <div data-ng-message="required">This field is required</div>
+              <div data-ng-message="number">Should be a number / Number should be greater than 0</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout="row" layout-align="space-between center">
+          <div>
+            <div data-ng-show="cc.output >= 0">
+              Result: <strong data-ng-bind="cc.output">&nbsp;</strong>
+            </div>
+          </div>
+          <div>
+            <md-button
+              type="reset"
+              data-ng-click="cc.reset()"
+              class="md-raised">Reset</md-button>
+            <md-button
+              data-ng-disabled="calcForm.$invalid"
+              type="submit"
+              multiply="cc.setResult"
+              numbers="cc.data"
+              class="md-raised md-primary">Multiply</md-button>
+          </div>
+        </div>
+      </form>
+    </md-content>
+  </div>
+</div>

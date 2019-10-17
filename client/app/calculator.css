@@ -1,0 +1,27 @@
+input.ng-invalid {
+  font-weight: 600;
+}
+.md-pane {
+  min-height: 320px;
+  margin-top: 10%;
+  box-shadow: 0 0 4px #88888850;
+}
+.md-pane md-toolbar {
+  border-radius: 4px 4px 0 0;
+}
+.md-pane md-content {
+  background: #f2f2f2;
+  border-radius: 0 0 4px 4px;
+}
+@media (max-width: 600px) {
+  .md-pane {
+    margin-top: 0;
+    height: 100vh;
+  }
+  .md-pane md-toolbar {
+    border-radius: 0;
+  }
+  .md-pane md-content {
+    border-radius: 0;
+  }
+}

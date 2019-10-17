@@ -1,0 +1,14 @@
+{
+  "development": {
+    "host": "localhost",
+    "user": "root",
+    "database": "calculator",
+	"password": "azorazoe"
+  },
+  "production": {
+    "host": "localhost",
+    "user": "produser",
+    "database": "calculator",
+	"password": "!@#$%^&*()_+{}[]"
+  }
+}

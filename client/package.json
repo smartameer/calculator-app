@@ -1,0 +1,23 @@
+{
+  "name": "calculator-web",
+  "version": "1.0.0",
+  "description": "Simple Calculator App",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server ./ -a localhost -p 8081 -c -1 -s -o",
+    "test": "karma start karma.conf.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^0.11.1",
+    "jasmine": "^3.5.0",
+    "jasmine-core": "^3.5.0",
+    "karma": "^4.4.0",
+    "karma-cli": "^2.0.0",
+    "karma-coverage": "^2.0.1",
+    "karma-jasmine": "^2.0.1",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "phantomjs": "^2.1.7"
+  }
+}

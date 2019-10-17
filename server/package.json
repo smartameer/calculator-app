@@ -1,0 +1,40 @@
+{
+    "name": "calculator",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "watch": "nodemon index.js",
+        "test": "mocha"
+    },
+    "nodemonConfig": {
+        "ignore": [
+            "test/*",
+            "README.md",
+            "node_modules/**/node_modules"
+        ],
+        "watch": [
+            "server.js",
+            "database.json",
+            "app"
+        ],
+        "env": {
+            "NODE_ENV": "development",
+            "PORT": 8080,
+            "HOST": "localhost"
+        },
+        "ext": "js,json"
+    },
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "cors": "^2.8.4",
+        "express": "^4.16.3",
+        "mysql": "^2.15.0"
+    },
+    "devDependencies": {
+        "mocha": "^6.2.1",
+        "nodemon": "^1.17.5",
+        "should": "^13.2.3",
+        "supertest": "^4.0.2"
+    }
+}
