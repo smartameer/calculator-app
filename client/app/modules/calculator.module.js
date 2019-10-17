@@ -9,5 +9,9 @@
     ng.module('calculator', [
         'ngMessages',
         'ngMaterial'
-    ])
+    ]).config(function($mdThemingProvider) {
+        $mdThemingProvider.theme('default')
+            .primaryPalette('teal')
+            .dark();
+    })
 })(angular)

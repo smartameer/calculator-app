@@ -9,7 +9,7 @@
 
     ng.module('calculator')
         .component('myCalculator', {
-            templateUrl: '/app/calculator.html',
+            templateUrl: '/app/components/calculator.html',
             controller: 'CalculatorController',
             controllerAs: 'cc'
         })

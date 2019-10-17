@@ -8,7 +8,6 @@
 
     var CalculatorController = function ($scope, $timeout, CalculateService, CONST) {
         var vm = this
-        vm.title = "Multiply"
         vm.integerPattern = /^\d*$/
         vm.data = {
             input1: '',
@@ -18,9 +17,7 @@
         vm.result = -1
 
         vm.setResult = function (data) {
-            $scope.$apply()
             vm.savedStatus = CONST.STATUS.PROGRESS
-            debugger;
             CalculateService.saveData(
                 ng.extend({}, vm.data, { result: data }),
                 function (error, response) {

@@ -21,7 +21,12 @@ module.exports = function(config) {
         'libs/angular-material.min.js',
         'libs/angular-animate.min.js',
         'libs/angular-aria.min.js',
-        'app/*.js',
+        'app/modules/*.js',
+        'app/constants/*.js',
+        'app/services/*.js',
+        'app/directives/*.js',
+        'app/controllers/*.js',
+        'app/components/*.js',
         'test/*.spec.js'
     ],
 
