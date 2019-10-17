@@ -11,9 +11,9 @@ USE `calculator`;
 
 CREATE TABLE IF NOT EXISTS `calculator_data` (
   `id` enum('1') NOT NULL,
-  `input1` INT NOT NULL,
-  `input2` INT NOT NULL,
-  `result` INT NOT NULL,
+  `input1` BIGINT NOT NULL,
+  `input2` BIGINT NOT NULL,
+  `result` BIGINT NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
