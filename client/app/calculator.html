@@ -3,6 +3,7 @@
     <md-toolbar class="md-primary">
       <div class="md-toolbar-tools">
         <h2 class="md-flex">Calculator</h2>
+        <span data-ng-show="cc.savedStatus == 1">Saved</span>
       </div>
     </md-toolbar>
     <md-content flex layout-padding>
@@ -13,16 +14,16 @@
             <input
               type="number"
               min="1"
-              data-ng-model="cc.data.fnum"
+              data-ng-model="cc.data.input1"
               data-ng-pattern="cc.integerPattern"
               data-ng-required="true"
               placeholder="First Number"
               class="form-control input-lg"
-              name="fnum"
+              name="input1"
             />
             <div
-              data-ng-messages="calcForm.fnum.$error"
-              data-ng-show="calcForm.fnum.$touched"
+              data-ng-messages="calcForm.input1.$error"
+              data-ng-show="calcForm.input1.$touched"
               multiple md-auto-hide="false"
               >
               <div data-ng-message="min">Number should be greater than 0</div>
@@ -35,17 +36,17 @@
             <input
               type="number"
               min="1"
-              data-ng-model="cc.data.snum"
+              data-ng-model="cc.data.input2"
               data-ng-pattern="cc.integerPattern"
               data-ng-required="true"
               placeholder="Second Number"
               class="form-control input-lg"
-              name="snum"
+              name="input2"
               />
             <div
               class="help-block"
-              data-ng-messages="calcForm.snum.$error"
-              data-ng-show="calcForm.snum.$touched"
+              data-ng-messages="calcForm.input2.$error"
+              data-ng-show="calcForm.input2.$touched"
               >
               <div data-ng-message="min">Number should be greater than 0</div>
               <div data-ng-message="required">This field is required</div>
@@ -55,8 +56,8 @@
         </div>
         <div layout="row" layout-align="space-between center">
           <div>
-            <div data-ng-show="cc.output >= 0">
-              Result: <strong data-ng-bind="cc.output">&nbsp;</strong>
+            <div data-ng-show="cc.result >= 0">
+              Result: <strong data-ng-bind="cc.result">&nbsp;</strong>
             </div>
           </div>
           <div>
