@@ -8,74 +8,97 @@
         <small class="text-error" data-ng-show="cc.savedStatus === 2">Unable to save</small>
       </div>
     </md-toolbar>
-    <md-content flex layout-padding>
-      <form name="calcForm">
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>First Number</label>
-            <input
-              type="number"
-              min="1"
-              data-ng-model="cc.data.input1"
-              data-ng-pattern="cc.integerPattern"
-              data-ng-required="true"
-              placeholder="First Number"
-              class="form-control input-lg"
-              name="input1"
-            />
-            <div
-              data-ng-messages="calcForm.input1.$error"
-              data-ng-show="calcForm.input1.$touched"
-              multiple md-auto-hide="false"
-              >
-              <div data-ng-message="min">Number should be greater than 0</div>
-              <div data-ng-message="required">This field is required</div>
-              <div data-ng-message="number">Should be a number / Number should be greater than 0</div>
-            </div>
-          </md-input-container>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Last Number</label>
-            <input
-              type="number"
-              min="1"
-              data-ng-model="cc.data.input2"
-              data-ng-pattern="cc.integerPattern"
-              data-ng-required="true"
-              placeholder="Second Number"
-              class="form-control input-lg"
-              name="input2"
+    <md-content flex layout-padding layout-gt-sm="row" layout="column">
+      <div flex-gt-sm="60" flex="30">
+        <form name="calcForm">
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>First Number</label>
+              <input
+                type="number"
+                min="1"
+                data-ng-model="cc.data.input1"
+                data-ng-pattern="cc.integerPattern"
+                data-ng-required="true"
+                placeholder="First Number"
+                class="form-control input-lg"
+                name="input1"
               />
-            <div
-              class="help-block"
-              data-ng-messages="calcForm.input2.$error"
-              data-ng-show="calcForm.input2.$touched"
-              >
-              <div data-ng-message="min">Number should be greater than 0</div>
-              <div data-ng-message="required">This field is required</div>
-              <div data-ng-message="number">Should be a number / Number should be greater than 0</div>
+              <div
+                data-ng-messages="calcForm.input1.$error"
+                data-ng-show="calcForm.input1.$touched"
+                multiple md-auto-hide="false"
+                >
+                <div data-ng-message="min">Number should be greater than 0</div>
+                <div data-ng-message="required">This field is required</div>
+                <div data-ng-message="number">Should be a number / Number should be greater than 0</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Last Number</label>
+              <input
+                type="number"
+                min="1"
+                data-ng-model="cc.data.input2"
+                data-ng-pattern="cc.integerPattern"
+                data-ng-required="true"
+                placeholder="Second Number"
+                class="form-control input-lg"
+                name="input2"
+                />
+              <div
+                class="help-block"
+                data-ng-messages="calcForm.input2.$error"
+                data-ng-show="calcForm.input2.$touched"
+                >
+                <div data-ng-message="min">Number should be greater than 0</div>
+                <div data-ng-message="required">This field is required</div>
+                <div data-ng-message="number">Should be a number / Number should be greater than 0</div>
+              </div>
+            </md-input-container>
+          </div>
+          <div layout="row" layout-align="space-between center">
+            <div>
+              <div data-ng-show="cc.result >= 0">
+                Result: <strong data-ng-bind="cc.result">&nbsp;</strong>
+              </div>
             </div>
-          </md-input-container>
-        </div>
-        <div layout="row" layout-align="space-between center">
-          <div>
-            <div data-ng-show="cc.result >= 0">
-              Result: <strong data-ng-bind="cc.result">&nbsp;</strong>
+            <div>
+              <md-button
+                type="reset"
+                data-ng-click="cc.reset()"
+                class="md-raised">Reset</md-button>
+              <md-button
+                data-ng-disabled="calcForm.$invalid"
+                type="submit"
+                multiply="cc.setResult"
+                numbers="cc.data"
+                class="md-raised md-primary">Multiply</md-button>
             </div>
           </div>
-          <div>
-            <md-button
-              type="reset"
-              data-ng-click="cc.reset()"
-              class="md-raised">Reset</md-button>
-            <md-button
-              data-ng-disabled="calcForm.$invalid"
-              type="submit"
-              multiply="cc.setResult"
-              numbers="cc.data"
-              class="md-raised md-primary">Multiply</md-button>
-          </div>
+        </form>
+      </div>
+      <md-divider></md-divider>
+      <div flex-gt-sm="40" flex="70" class="scrollable-wrapper">
+        <div class="scrollable">
+          <table>
+            <thead>
+              <tr>
+                <th>First Number</th>
+                <th>Second Number</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-ng-repeat="item in cc.results">
+                <td>{{item.input1}}</td>
+                <td>{{item.input2}}</td>
+                <td>{{item.result}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </form>
+      </div>
     </md-content>
   </div>
 </div>

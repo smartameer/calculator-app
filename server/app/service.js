@@ -15,17 +15,21 @@ const connection = require('./db')
  * @error null - status 400
  */
 const getData = (req, res, next) => {
-    console.log( req.method + ' : ' + req.url)
+    var limit = parseInt(req.query.limit, 10) || 1;
+    console.log(req.method + ' : ' + req.url)
     res.type('json')
-    connection.query('select * from calculator_data LIMIT 1', (error, results) => {
+    connection.query(`SELECT input1, input2, result FROM calculator_data ORDER BY id DESC LIMIT 0,${limit}`, (error, results) => {
         if (error) {
             res.status(400)
             res.end(error)
         }
         if (results.length > 0) {
-            var record = results[0]
-            delete record.id
-            res.json(record)
+            if (limit === 1) {
+                var record = results[0]
+                res.json(record)
+            } else {
+                res.json(results)
+            }
             res.end()
         } else {
             res.status(400)
@@ -45,10 +49,10 @@ const getData = (req, res, next) => {
  * @error null - status 400
  */
 const saveData = (req, res, next) => {
-    console.log( req.method + ' : ' + req.url)
+    console.log(req.method + ' : ' + req.url)
     res.type('json')
     const { input1, input2, result } = req.body
-    const sql = `INSERT INTO calculator_data(input1, input2, result) VALUES (${input1}, ${input2}, ${result}) ON DUPLICATE KEY UPDATE input1 = ${input1}, input2 = ${input2}, result = ${result}`
+    const sql = `INSERT INTO calculator_data(input1, input2, result) VALUES (${input1}, ${input2}, ${result})`
     connection.query(sql, error => {
         if (error)  {
             res.status(400)

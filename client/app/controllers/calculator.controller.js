@@ -15,6 +15,7 @@
         }
         vm.savedStatus = CONST.STATUS.INITIAL // idle
         vm.result = -1
+        vm.results = [];
 
         vm.setResult = function (data) {
             vm.savedStatus = CONST.STATUS.PROGRESS
@@ -32,6 +33,7 @@
         }
 
         vm.clearSavedStatus = function () {
+            vm.fetchResults()
             $timeout(function () {
                 vm.savedStatus = CONST.STATUS.INITIAL
             }, 3000)
@@ -48,6 +50,14 @@
             $scope.calcForm.$setUntouched(true)
         }
 
+        vm.fetchResults = function () {
+            CalculateService.getData(function (error, response) {
+                if (ng.equals(error, null)) {
+                    vm.results = response
+                }
+            }, 100)
+        }
+
         vm.init = function () {
             CalculateService.getData(function (error, response) {
                 if (ng.equals(error, null)) {
@@ -58,6 +68,7 @@
                     vm.result = response.result
                 }
             })
+            vm.fetchResults()
         }
 
         vm.init()

@@ -10,7 +10,7 @@ CREATE DATABASE `calculator` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish
 USE `calculator`;
 
 CREATE TABLE IF NOT EXISTS `calculator_data` (
-  `id` enum('1') NOT NULL,
+  `id` INT AUTO_INCREMENT NOT NULL,
   `input1` BIGINT NOT NULL,
   `input2` BIGINT NOT NULL,
   `result` BIGINT NOT NULL,

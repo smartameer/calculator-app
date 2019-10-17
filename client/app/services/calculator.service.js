@@ -22,14 +22,14 @@
             })
         }
 
-        var getData = function (callback) {
+        var getData = function (callback, limit) {
             $http({
                 url: CONST.BASE_API + CONST.API.GET_DATA.URL,
-                method: CONST.API.GET_DATA.METHOD
+                method: CONST.API.GET_DATA.METHOD,
+                params: { limit: limit || 1}
             }).then(function (resp) {
                 $log.info('Found a record')
                 if (ng.equals(resp.status, 200) &&
-                    ng.isObject(resp.data) &&
                     !ng.equals(resp.data, null)) {
                     return callback(null, resp.data)
                 }

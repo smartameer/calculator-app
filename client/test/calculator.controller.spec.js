@@ -22,12 +22,14 @@ describe('Calculator Application Controller', function() {
     it('Should have defined values', function() {
         expect(controller.savedStatus).toEqual(constants.STATUS.INITIAL)
         expect(controller.result).toEqual(-1)
+        expect(controller.results).toEqual([])
         expect(controller.data).toEqual({
             input1: '',
             input2: ''
         })
         expect(controller.integerPattern).toEqual(/^\d*$/)
         expect(controller.setResult).toBeDefined()
+        expect(controller.fetchResults).toBeDefined()
         expect(controller.clearSavedStatus).toBeDefined()
         expect(controller.reset).toBeDefined()
         expect(controller.init).toBeDefined()
