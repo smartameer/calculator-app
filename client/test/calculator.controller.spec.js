@@ -19,10 +19,6 @@ describe('Calculator Application Controller', function() {
         })
     }))
 
-    afterEach(function() {
-
-    })
-
     it('Should have defined values', function() {
         expect(controller.savedStatus).toEqual(constants.STATUS.INITIAL)
         expect(controller.result).toEqual(-1)
